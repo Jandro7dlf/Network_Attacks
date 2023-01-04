@@ -8,11 +8,11 @@ Es uno de los ataques web más comunes que inserta código malicioso a una base 
 
 Por ejemplo: cuando una página te pide tu usuario y contraseña pero pones un código que te devuelve los usuarios y contraseñas que tiene en la base de datos.
 
-![Alt text](./img/Attack/10.png)
+![](img/10.png)
 
 Tipos de SQL Injection:
 
-![Alt text](./img/Attack/11.png)
+![](img/11.png)
 
 - **Error Based:** Necesita que el servidor de la base de datos envíe un error para saber la estructura de la base de datos. Por eso se debería desactivar o almacenar en logs con acceso restringido.
 
@@ -26,7 +26,7 @@ Tipos de SQL Injection:
 
 Antes de hacer el ataque necesitamos que la base de datos tenga una vulnerabilidad, para ello vamos a usar una técnica llamada `Google Dorking` que se trata de usar el filtro de búsqueda de google para encontrar vulnerabilidades.
 
-![Alt text](./img/Attack/12.png)
+![](img/12.png)
 
 Abrimos las herramientas para desarrolladores (F12) dentro de red, seleccionamos la que mande el `$_GET` y usaremos esa URL con la cookie de sesión que haya dentro.  
 Ya tenemos nuestra víctima. Pero atacar sin el consentimiento es ilegal por lo que usaremos un docker dentro de Kali Linux. Ahora vamos a por las herramientas.
@@ -43,7 +43,7 @@ sudo apt-get install sqlmap
 
 Una vez instalado podemos ver todas sus funciones con ``sqlmap -h`
 
-![Alt text](./img/Attack/13.png)
+![](img/13.png)
 
 Vamos a usar un comando que nos devuelva las bases de datos que tiene.
 
@@ -53,7 +53,7 @@ sqlmap -u <url> --cookie="<cookie de sesión>; security=low" --schema --batch
 
 Y nos dirá que recomendaciones seguir según encuentre alguna vulnerabilidad.
 
-![Alt text](./img/Attack/14.png)
+![](img/14.png)
 
 El resultado son todas las tablas y su tipo de las base de datos vulneradas.
 
@@ -65,7 +65,7 @@ Las vamos a dumpear desde la tabla `users` que hemos encontrado, para eso tan so
 sqlmap -u <url> --cookie="<cookie de sesión>; security=low" --dump -T users --batch
 ```
 
-![Alt text](./img/Attack/15.png)
+![](img/15.png)
 
 ### VULNERABILIDAD Y PROTECCIÓN
 
